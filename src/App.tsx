@@ -50,7 +50,7 @@ function App() {
           </GridItem>
         </Show>
 
-        <GridItem area="main" bg="dodgerblue">
+        <GridItem area="main">
           <GameGrid />
         </GridItem>
       </Grid>

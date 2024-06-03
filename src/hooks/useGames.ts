@@ -2,18 +2,20 @@ import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
 
+export interface GameObject {
+  id: number;
+  name: string;
+  background_image: string;
+}
+interface FetchgamesResponse {
+  count: number;
+  results: GameObject[];
+}
+
 const useGames = () => {
   const [games, setGames] = useState<GameObject[]>([]);
   const [error, setError] = useState("");
 
-  interface GameObject {
-    id: number;
-    name: string;
-  }
-  interface FetchgamesResponse {
-    count: number;
-    results: GameObject[];
-  }
   useEffect(() => {
     const controller = new AbortController();
     apiClient

@@ -3,6 +3,7 @@ import { Grid, GridItem, Show } from "@chakra-ui/react";
 import Alert from "./Alert";
 import ListGroup from "./components/ListGroup";
 import NavBar from "./components/NavBar";
+import GameGrid from "./components/GameGrid";
 
 function App() {
   const [pilots, setPilots] = useState<string[]>([]);
@@ -50,7 +51,7 @@ function App() {
         </Show>
 
         <GridItem area="main" bg="dodgerblue">
-          Main
+          <GameGrid />
         </GridItem>
       </Grid>
       {/* <NavBarOld

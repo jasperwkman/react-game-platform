@@ -39,8 +39,8 @@ function App() {
           lg: `"nav nav" "aside main"`,
         }}
       >
-        <GridItem area="nav" bg="coral">
-          Nav
+        <GridItem area="nav" bg="black">
+          <NavBar />
         </GridItem>
         <Show above="lg">
           {" "}
@@ -53,7 +53,7 @@ function App() {
           Main
         </GridItem>
       </Grid>
-      {/* <NavBar
+      {/* <NavBarOld
         pilots={pilots}
         onClear={() => {
           setPilots([]);
@@ -62,7 +62,7 @@ function App() {
           setPilots([...pilots, newPilotName]);
         }}
         newPilotInputRef={newPilotInputRef}
-      ></NavBar> */}
+      ></NavBarOld> */}
       {/* <ListGroup
         names={gundamSeedList}
         heading="Gundame Seed"

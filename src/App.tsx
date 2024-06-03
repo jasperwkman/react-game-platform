@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Button, ButtonGroup } from "@chakra-ui/react";
+import { Grid, GridItem, Show } from "@chakra-ui/react";
 import Alert from "./Alert";
 import ListGroup from "./components/ListGroup";
 import NavBar from "./components/NavBar";
@@ -26,14 +26,34 @@ function App() {
     "XXXG-01S Shenlong Gundam / XXXG-01S2 Altron Gundam (Gundam Zero-Five)",
   ];
 
-  const handleSelectItem = (item: string) => {
-    console.log(item);
-  };
+  // const handleSelectItem = (item: string) => {
+  //   console.log(item);
+  // };
 
   return (
     <div>
       {false && <Alert>Hello</Alert>}
-      <NavBar
+      <Grid
+        templateAreas={{
+          base: `"nav" "main"`,
+          lg: `"nav nav" "aside main"`,
+        }}
+      >
+        <GridItem area="nav" bg="coral">
+          Nav
+        </GridItem>
+        <Show above="lg">
+          {" "}
+          <GridItem area="aside" bg="gold">
+            Aside
+          </GridItem>
+        </Show>
+
+        <GridItem area="main" bg="dodgerblue">
+          Main
+        </GridItem>
+      </Grid>
+      {/* <NavBar
         pilots={pilots}
         onClear={() => {
           setPilots([]);
@@ -42,9 +62,8 @@ function App() {
           setPilots([...pilots, newPilotName]);
         }}
         newPilotInputRef={newPilotInputRef}
-      ></NavBar>
-      <Button colorScheme="blue">Button</Button>
-      <ListGroup
+      ></NavBar> */}
+      {/* <ListGroup
         names={gundamSeedList}
         heading="Gundame Seed"
         onSelectItem={handleSelectItem}
@@ -53,7 +72,7 @@ function App() {
         names={wingGundamList}
         heading="Wing Gundame"
         onSelectItem={handleSelectItem}
-      />
+      /> */}
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { Button, ButtonGroup } from "@chakra-ui/react";
 import Alert from "./Alert";
 import ListGroup from "./components/ListGroup";
 import NavBar from "./components/NavBar";
@@ -42,6 +43,7 @@ function App() {
         }}
         newPilotInputRef={newPilotInputRef}
       ></NavBar>
+      <Button colorScheme="blue">Button</Button>
       <ListGroup
         names={gundamSeedList}
         heading="Gundame Seed"

@@ -1,0 +1,58 @@
+import { useState, useRef } from "react";
+import Alert from "./Alert";
+import ListGroup from "./components/ListGroup";
+import NavBar from "./components/NavBar";
+
+function App() {
+  const [pilots, setPilots] = useState<string[]>([]);
+  const newPilotInputRef = useRef<HTMLInputElement>(null);
+
+  const gundamSeedList = [
+    "GAT-X102 Duel Gundam Assault Shroud (R02)",
+    "GAT-X207 Blitz Gundam (R04)",
+    "ZGMF-1017 Mobile GINN (R06)",
+    "GAT-X131 Calamity Gundam (R08)",
+    "GAT-X370 Raider Gundam (R10)",
+    "TMF/A-802 BuCUE (R12)",
+    "ZGMF-X09A Justice Gundam (R14)",
+    "MBF-M1 M1 Astray (R16)",
+  ];
+  const wingGundamList = [
+    "XXXG-01W Wing Gundam (Gundam Zero-One)",
+    "XXXG-01D Gundam Deathscythe / XXXG-01D2 Gundam Deathscythe Hell (Gundam Zero-Two)",
+    "XXXG-01H Gundam Heavyarms (Gundam Zero-Three)",
+    "XXXG-01SR Gundam Sandrock (Gundam Zero-Four)",
+    "XXXG-01S Shenlong Gundam / XXXG-01S2 Altron Gundam (Gundam Zero-Five)",
+  ];
+
+  const handleSelectItem = (item: string) => {
+    console.log(item);
+  };
+
+  return (
+    <div>
+      {false && <Alert>Hello</Alert>}
+      <NavBar
+        pilots={pilots}
+        onClear={() => {
+          setPilots([]);
+        }}
+        onAppend={(newPilotName: string) => {
+          setPilots([...pilots, newPilotName]);
+        }}
+        newPilotInputRef={newPilotInputRef}
+      ></NavBar>
+      <ListGroup
+        names={gundamSeedList}
+        heading="Gundame Seed"
+        onSelectItem={handleSelectItem}
+      />
+      <ListGroup
+        names={wingGundamList}
+        heading="Wing Gundame"
+        onSelectItem={handleSelectItem}
+      />
+    </div>
+  );
+}
+export default App;

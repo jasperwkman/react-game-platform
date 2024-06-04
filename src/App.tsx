@@ -4,6 +4,7 @@ import Alert from "./Alert";
 import ListGroup from "./components/ListGroup";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
+import GenreList from "./components/GenreList";
 
 function App() {
   const [pilots, setPilots] = useState<string[]>([]);
@@ -45,8 +46,8 @@ function App() {
         </GridItem>
         <Show above="lg">
           {" "}
-          <GridItem area="aside" bg="gold">
-            Aside
+          <GridItem area="aside">
+            <GenreList />
           </GridItem>
         </Show>
 

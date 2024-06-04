@@ -7,9 +7,9 @@ const port = 3000;
 
 app.use(cors());
 
-app.get("/games", async (req, res) => {
+app.get("/:func", async (req, res) => {
     try {
-        const response = await axios.get("https://api.rawg.io/api/games", {
+        const response = await axios.get(`https://api.rawg.io/api/${req.params.func}`, {
             params: {
                 key: "71861e9efc4b4470bad7b1d04eb50b24",
             },

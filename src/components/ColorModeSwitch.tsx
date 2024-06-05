@@ -6,7 +6,9 @@ function ColorModeSwitch() {
   return (
     <HStack>
       <Switch isChecked={colorMode === "dark"} onChange={toggleColorMode} />
-      <Text>Dark Mode</Text>
+      <Text color="rgb(56, 130, 171)" as="b" paddingRight={15}>
+        Dark Mode
+      </Text>
     </HStack>
   );
 }

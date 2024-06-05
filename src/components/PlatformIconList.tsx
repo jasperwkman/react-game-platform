@@ -41,7 +41,13 @@ const iconColor: { [key: string]: string } = {
 
 const PlatformIconList = ({ platforms }: Props) => {
   return (
-    <HStack marginY={1}>
+    <HStack
+      marginY={1}
+      borderRadius="5px"
+      background="gray.600"
+      width="100%"
+      padding="5px"
+    >
       {platforms.map((plaform, idx) => (
         <Icon
           key={idx}

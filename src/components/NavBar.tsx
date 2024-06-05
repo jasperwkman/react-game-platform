@@ -1,14 +1,12 @@
 import { HStack, Image, Text } from "@chakra-ui/react";
-import naruto from "../assets/naruto-square.png";
+import logo from "../assets/Game_On.png";
+import logo_bg from "../assets/Game_On_banner_bg.png";
 import ColorModeSwitch from "./ColorModeSwitch";
 function NavBar() {
   return (
     <HStack justifyContent="space-between">
-      <div style={{ display: "flex", alignItems: "left" }}>
-        <Image src={naruto} boxSize="60px"></Image>
-        <Text fontSize="3xl" color="tomato">
-          Naruto
-        </Text>
+      <div>
+        <Image src={logo} width="280px" height="100px"></Image>
       </div>
       <ColorModeSwitch />
     </HStack>

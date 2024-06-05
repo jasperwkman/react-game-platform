@@ -5,6 +5,7 @@ import ListGroup from "./components/ListGroup";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
+import logo_bg from "/src/assets/Game_On_banner_bg.png";
 
 function App() {
   const [pilots, setPilots] = useState<string[]>([]);
@@ -33,49 +34,40 @@ function App() {
   // };
 
   return (
-    <div>
-      {false && <Alert>Hello</Alert>}
-      <Grid
-        templateAreas={{
-          base: `"nav" "main"`,
-          lg: `"nav nav" "aside main"`,
+    <Grid
+      templateAreas={{
+        base: `"nav" "main"`,
+        lg: `"nav nav" "aside main"`,
+      }}
+      templateColumns={{
+        base: "1fr",
+        lg: "250px 1fr",
+      }}
+    >
+      <GridItem
+        area="nav"
+        style={{
+          backgroundImage: `url(${logo_bg})`,
+          backgroundRepeat: "repeat-x",
+          backgroundSize: "auto 100%", // Maintain aspect ratio
+          height: "100px", // Set the height
+          width: "100%", // Allow width to adjust
         }}
       >
-        <GridItem area="nav" bg="black">
-          <NavBar />
+        <NavBar />
+      </GridItem>
+      <Show above="lg">
+        {" "}
+        <GridItem area="aside">
+          <GenreList />
         </GridItem>
-        <Show above="lg">
-          {" "}
-          <GridItem area="aside">
-            <GenreList />
-          </GridItem>
-        </Show>
+      </Show>
 
-        <GridItem area="main">
-          <GameGrid />
-        </GridItem>
-      </Grid>
-      {/* <NavBarOld
-        pilots={pilots}
-        onClear={() => {
-          setPilots([]);
-        }}
-        onAppend={(newPilotName: string) => {
-          setPilots([...pilots, newPilotName]);
-        }}
-        newPilotInputRef={newPilotInputRef}
-      ></NavBarOld> */}
-      {/* <ListGroup
-        names={gundamSeedList}
-        heading="Gundame Seed"
-        onSelectItem={handleSelectItem}
-      />
-      <ListGroup
-        names={wingGundamList}
-        heading="Wing Gundame"
-        onSelectItem={handleSelectItem}
-      /> */}
-    </div>
+      <GridItem area="main">
+        {false && <Alert>Hello</Alert>}
+        <GameGrid />
+      </GridItem>
+    </Grid>
   );
 }
 export default App;

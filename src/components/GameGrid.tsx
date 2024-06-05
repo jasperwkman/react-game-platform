@@ -3,6 +3,7 @@ import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
 import useData from "../hooks/useData";
+import { Genre } from "../hooks/useGenre";
 
 interface Game {
   id: number;
@@ -11,14 +12,24 @@ interface Game {
   parent_platforms: { platform: GamePlatform }[];
   metacritic: number;
 }
+
+interface Props {
+  selectedGenre: Genre | null;
+}
 export interface GamePlatform {
   id: number;
   name: string;
   slug: string;
 }
 
-const GameGrid = () => {
-  const { data, error, isLoading } = useData<Game>("/games");
+const GameGrid = ({ selectedGenre }: Props) => {
+  const { data, error, isLoading } = useData<Game>(
+    "/games",
+    {
+      params: { genres: selectedGenre?.id },
+    },
+    selectedGenre ? [selectedGenre.id] : []
+  );
   return (
     <>
       {error && <Text>{error}</Text>}

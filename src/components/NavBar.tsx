@@ -5,6 +5,7 @@ import {
   Image,
   Menu,
   MenuButton,
+  Show,
   Text,
 } from "@chakra-ui/react";
 import logo from "../assets/Game_On.png";
@@ -21,10 +22,13 @@ function NavBar({ onSelectGenre, selectedGenre }: Props) {
       <Image src={logo} width="280px" height="100px"></Image>
       <HStack>
         <ColorModeSwitch />
-        <GenreDrawerList
-          onSelectGenre={onSelectGenre}
-          selectedGenre={selectedGenre}
-        />
+        <Show below="lg">
+          {" "}
+          <GenreDrawerList
+            onSelectGenre={onSelectGenre}
+            selectedGenre={selectedGenre}
+          />
+        </Show>
       </HStack>
     </HStack>
   );

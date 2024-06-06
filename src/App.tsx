@@ -5,6 +5,7 @@ import GameGrid from "./components/GameGrid";
 import logo_bg from "/src/assets/Game_On_banner_bg.png";
 import { Genre } from "./hooks/useGenre";
 import GenreList from "./components/GenreList";
+import PlatformSelector from "./components/PlatformSelector";
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
@@ -40,7 +41,6 @@ function App() {
         />
       </GridItem>
       <Show above="lg">
-        {" "}
         <GridItem area="aside">
           <GenreList
             onSelectGenre={handleSelectGenre}
@@ -50,6 +50,7 @@ function App() {
       </Show>
 
       <GridItem area="main">
+        <PlatformSelector />
         <GameGrid selectedGenre={selectedGenre} />
       </GridItem>
     </Grid>

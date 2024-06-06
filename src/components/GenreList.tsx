@@ -5,7 +5,6 @@ import {
   List,
   ListItem,
   Spinner,
-  Text,
   useColorMode,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";

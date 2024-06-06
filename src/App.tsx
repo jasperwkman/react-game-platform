@@ -1,6 +1,5 @@
 import { useState, useRef } from "react";
 import { Grid, GridItem, Show } from "@chakra-ui/react";
-import Alert from "./Alert";
 import NavBar from "./components/NavBar";
 import GameGrid from "./components/GameGrid";
 import logo_bg from "/src/assets/Game_On_banner_bg.png";
@@ -35,7 +34,10 @@ function App() {
           width: "100%", // Allow width to adjust
         }}
       >
-        <NavBar />
+        <NavBar
+          onSelectGenre={handleSelectGenre}
+          selectedGenre={selectedGenre}
+        />
       </GridItem>
       <Show above="lg">
         {" "}

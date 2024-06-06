@@ -8,18 +8,18 @@ import {
   Text,
   useColorMode,
 } from "@chakra-ui/react";
-import useData from "../hooks/useData";
 import { useEffect, useState } from "react";
-import { Genre } from "../hooks/useGenre";
+import { Genre, useGenre } from "../hooks/useGenre";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 
-const GenreList = ({ onSelectGenre }: Props) => {
+const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
   const [bgColor1, setbgColor1] = useState("");
   const [bgColor2, setbgColor2] = useState("");
-  const { data, error, isLoading } = useData<Genre>("/genres");
+  const { data, error, isLoading } = useGenre();
   const { colorMode } = useColorMode();
 
   useEffect(() => {
@@ -50,6 +50,10 @@ const GenreList = ({ onSelectGenre }: Props) => {
             />
             <Button
               key={idx}
+              fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+              color={
+                genre.id === selectedGenre?.id ? "blue.500" : "theme.colors"
+              }
               onClick={() => onSelectGenre(genre)}
               fontSize="lg"
               variant="link"

@@ -37,6 +37,7 @@ const GenreDrawerList = ({ onSelectGenre, selectedGenre }: Props) => {
         placement="right"
         onClose={onClose}
         finalFocusRef={btnRef}
+        size="xs"
       >
         <DrawerOverlay />
         <DrawerContent>

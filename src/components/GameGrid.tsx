@@ -4,6 +4,7 @@ import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
 import { Genre } from "../hooks/useGenre";
 import { useGame } from "../hooks/useGames";
+import { Platform } from "../hooks/usePlatforms";
 
 interface Game {
   id: number;
@@ -15,6 +16,7 @@ interface Game {
 
 interface Props {
   selectedGenre: Genre | null;
+  selectedPlatform: Platform | null;
 }
 export interface GamePlatform {
   id: number;
@@ -22,13 +24,8 @@ export interface GamePlatform {
   slug: string;
 }
 
-const GameGrid = ({ selectedGenre }: Props) => {
-  const { data, error, isLoading } = useGame(
-    {
-      params: { genres: selectedGenre?.id },
-    },
-    selectedGenre ? [selectedGenre.id] : []
-  );
+const GameGrid = ({ selectedGenre, selectedPlatform }: Props) => {
+  const { data, error, isLoading } = useGame(selectedGenre, selectedPlatform);
   return (
     <>
       {error && <Text>{error}</Text>}

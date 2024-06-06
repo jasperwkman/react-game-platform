@@ -1,5 +1,7 @@
 import { AxiosRequestConfig } from "axios";
 import useData from "./useData";
+import { Genre } from "./useGenre";
+import { Platform } from "./usePlatforms";
 
 export interface GamePlatform {
   id: number;
@@ -16,8 +18,14 @@ export interface GameObject {
 }
 
 export const useGame = (
-  requestConfig?: AxiosRequestConfig | null,
-  deps?: any[]
+  selectedGenre: Genre | null,
+  selectedPlatform: Platform | null
 ) => {
-  return useData<GameObject>("/games", requestConfig, deps);
+  return useData<GameObject>(
+    "/games",
+    {
+      params: { genres: selectedGenre?.id, platform: selectedPlatform?.id },
+    },
+    [selectedGenre?.id, selectedPlatform?.id]
+  );
 };

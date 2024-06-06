@@ -6,13 +6,23 @@ import logo_bg from "/src/assets/Game_On_banner_bg.png";
 import { Genre } from "./hooks/useGenre";
 import GenreList from "./components/GenreList";
 import PlatformSelector from "./components/PlatformSelector";
+import usePlatforms, { Platform } from "./hooks/usePlatforms";
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
+    null
+  );
 
   const handleSelectGenre = (genre: Genre) => {
     console.log(genre);
     setSelectedGenre(genre);
+  };
+
+  const handleSelectPlatform = (platform: Platform) => {
+    console.log(platform);
+    setSelectedPlatform(platform);
+    platform;
   };
   return (
     <Grid
@@ -50,8 +60,14 @@ function App() {
       </Show>
 
       <GridItem area="main">
-        <PlatformSelector />
-        <GameGrid selectedGenre={selectedGenre} />
+        <PlatformSelector
+          selectedPlatform={selectedPlatform}
+          onSelectPlatform={handleSelectPlatform}
+        />
+        <GameGrid
+          selectedGenre={selectedGenre}
+          selectedPlatform={selectedPlatform}
+        />
       </GridItem>
     </Grid>
   );

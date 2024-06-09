@@ -19,11 +19,10 @@ interface Props {
 function NavBar({ onSelectGenre, selectedGenre }: Props) {
   return (
     <HStack justifyContent="space-between" alignItems={"flex-start"}>
-      <Image src={logo} width="280px" height="100px"></Image>
-      <HStack>
+      <Image src={logo} width="240px" height="100px"></Image>
+      <HStack paddingRight="5px">
         <ColorModeSwitch />
         <Show below="lg">
-          {" "}
           <GenreDrawerList
             onSelectGenre={onSelectGenre}
             selectedGenre={selectedGenre}

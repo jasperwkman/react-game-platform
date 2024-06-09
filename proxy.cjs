@@ -11,12 +11,14 @@ app.use(cors());
 
 app.get("/:func", async (req, res) => {
     try {
-        console.log(req.query);
+
         param = {
             key: "71861e9efc4b4470bad7b1d04eb50b24",
         }
         if (req.query.genres) param.genres = req.query.genres
-        if (req.query.platform) param.platform = req.query.platform
+        if (req.query.platform) param.platforms = req.query.platform
+        if (req.query.ordering) param.ordering = req.query.ordering
+        console.log(param);
         const response = await axios.get(`https://api.rawg.io/api/${req.params.func}`, {
             params: param
         });

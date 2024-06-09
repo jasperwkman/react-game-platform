@@ -29,7 +29,7 @@ const GenreDrawerList = ({ onSelectGenre, selectedGenre }: Props) => {
         icon={<HamburgerIcon />}
         variant="outline"
         onClick={onOpen}
-        colorScheme="teal"
+        colorScheme="blue"
         ref={btnRef}
       />
       <Drawer

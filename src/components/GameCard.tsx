@@ -2,6 +2,7 @@ import { GameObject } from "../hooks/useGames";
 import { Card, CardBody, HStack, Heading, Image, Text } from "@chakra-ui/react";
 import PlatformIconList from "./PlatformIconList";
 import CriticScore from "./CriticScore";
+import No_Image_Available from "../assets/No_Image_Available.jpg";
 
 interface Props {
   game: GameObject;
@@ -11,10 +12,14 @@ const GameCard = ({ game }: Props) => {
   return (
     <Card>
       <Image
-        src={game.background_image.replace(
-          "media/games",
-          "media/crop/600/400/games"
-        )}
+        src={
+          game.background_image
+            ? game.background_image.replace(
+                "media/games",
+                "media/crop/600/400/games"
+              )
+            : No_Image_Available
+        }
       />
       <CardBody>
         <Heading fontSize="xl">{game.name}</Heading>

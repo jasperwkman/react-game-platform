@@ -21,14 +21,14 @@ const GameCard = ({ game }: Props) => {
             : No_Image_Available
         }
       />
-      <CardBody>
-        <Heading fontSize="xl">{game.name}</Heading>
+      <CardBody paddingTop={-3}>
         <HStack justifyContent={"space-between"}>
           <PlatformIconList
             platforms={game.parent_platforms.map((p) => p.platform)}
           />
           <CriticScore score={game.metacritic} />
         </HStack>
+        <Heading fontSize="xl">{game.name}</Heading>
       </CardBody>
     </Card>
   );

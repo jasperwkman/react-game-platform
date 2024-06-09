@@ -1,4 +1,4 @@
-import { HStack, Icon } from "@chakra-ui/react";
+import { HStack, Icon, useColorMode } from "@chakra-ui/react";
 import { GamePlatform } from "../hooks/useGames";
 import {
   FaAndroid,
@@ -27,32 +27,43 @@ const iconMap: { [key: string]: IconType } = {
   web: BsGlobe,
   android: FaAndroid,
 };
-const iconColor: { [key: string]: string } = {
-  pc: "red.600",
-  playstation: "blue.300",
-  xbox: "green.300",
-  nintendo: "white",
-  mac: "gray.50",
-  linux: "orange.400",
-  ios: "gray.200",
-  web: "teal.100",
-  android: "green.600",
+
+interface ThemeColors {
+  light: string;
+  dark: string;
+}
+const iconColor: { [key: string]: ThemeColors } = {
+  pc: { light: "red.600", dark: "red.600" },
+  playstation: { light: "blue.300", dark: "blue.300" },
+  xbox: { light: "green.300", dark: "green.300" },
+  nintendo: { light: "black", dark: "white" },
+  mac: { light: "black", dark: "gray.50" },
+  linux: { light: "orange.400", dark: "orange.400" },
+  ios: { light: "black", dark: "gray.200" },
+  web: { light: "teal.100", dark: "teal.100" },
+  android: { light: "green.600", dark: "green.600" },
 };
 
 const PlatformIconList = ({ platforms }: Props) => {
+  const { colorMode } = useColorMode();
   return (
     <HStack
       marginY={1}
       borderRadius="5px"
-      background="gray.600"
+      background={colorMode === "dark" ? "gray.600" : "blue.100"}
       width="100%"
       padding="5px"
     >
       {platforms.map((plaform, idx) => (
         <Icon
           key={idx}
+          boxSize={6}
           as={iconMap[plaform.slug]}
-          color={iconColor[plaform.slug]}
+          color={
+            colorMode === "dark"
+              ? iconColor[plaform.slug].dark
+              : iconColor[plaform.slug].light
+          }
         />
       ))}
     </HStack>

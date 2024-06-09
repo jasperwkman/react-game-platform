@@ -16,12 +16,13 @@ import SearchInput from "./SearchInput";
 interface Props {
   onSelectGenre: (genre: Genre) => void;
   selectedGenre: Genre | null;
+  onSearch: (searchText: string) => void;
 }
-function NavBar({ onSelectGenre, selectedGenre }: Props) {
+function NavBar({ onSelectGenre, selectedGenre, onSearch }: Props) {
   return (
     <HStack alignItems={"flex-start"}>
       <Image src={logo} width="240px" height="100px" />
-      <SearchInput />
+      <SearchInput onSearch={onSearch} />
       <ColorModeSwitch />
       <HStack paddingRight="5px" paddingTop="5px">
         <Show below="lg">

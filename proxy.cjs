@@ -18,6 +18,7 @@ app.get("/:func", async (req, res) => {
         if (req.query.genres) param.genres = req.query.genres
         if (req.query.platform) param.platforms = req.query.platform
         if (req.query.ordering) param.ordering = req.query.ordering
+        if (req.query.searchText) param.search = req.query.searchText
         console.log(param);
         const response = await axios.get(`https://api.rawg.io/api/${req.params.func}`, {
             params: param

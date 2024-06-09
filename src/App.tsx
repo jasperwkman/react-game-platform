@@ -25,6 +25,10 @@ function App() {
     setGameQuery({ ...gameQuery, sortOrder });
     console.log(sortOrder);
   };
+  const handleSearchText = (searchText: string) => {
+    setGameQuery({ ...gameQuery, searchText });
+    console.log(searchText);
+  };
 
   return (
     <Grid
@@ -50,6 +54,7 @@ function App() {
         <NavBar
           onSelectGenre={handleSelectGenre}
           selectedGenre={gameQuery.genre}
+          onSearch={(searchText) => handleSearchText(searchText)}
         />
       </GridItem>
       <Show above="lg">

@@ -8,6 +8,7 @@ const port = 3000;
 var platforms = null;
 var genres = null;
 
+const RAWG_API_KEY = process.env.RAWG_API_KEY;
 app.use(cors());
 
 app.get("/:func", async (req, res) => {
@@ -17,7 +18,7 @@ app.get("/:func", async (req, res) => {
             return
         }
         param = {
-            key: "71861e9efc4b4470bad7b1d04eb50b24",
+            key: RAWG_API_KEY,
         }
         if (req.query.genres) param.genres = req.query.genres
         if (req.query.platform) param.platforms = req.query.platform
@@ -44,7 +45,7 @@ app.get("/platforms/lists/parents", async (req, res) => {
     try {
         const response = await axios.get(`https://api.rawg.io/api/platforms/lists/parents`, {
             params: {
-                key: "71861e9efc4b4470bad7b1d04eb50b24"
+                key: RAWG_API_KEY
             }
         });
         platforms = response.data;

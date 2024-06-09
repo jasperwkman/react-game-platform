@@ -12,16 +12,18 @@ import logo from "../assets/Game_On.png";
 import ColorModeSwitch from "./ColorModeSwitch";
 import GenreDrawerList from "./GenreDrawerList";
 import { Genre } from "../hooks/useGenre";
+import SearchInput from "./SearchInput";
 interface Props {
   onSelectGenre: (genre: Genre) => void;
   selectedGenre: Genre | null;
 }
 function NavBar({ onSelectGenre, selectedGenre }: Props) {
   return (
-    <HStack justifyContent="space-between" alignItems={"flex-start"}>
-      <Image src={logo} width="240px" height="100px"></Image>
+    <HStack alignItems={"flex-start"}>
+      <Image src={logo} width="240px" height="100px" />
+      <SearchInput />
+      <ColorModeSwitch />
       <HStack paddingRight="5px" paddingTop="5px">
-        <ColorModeSwitch />
         <Show below="lg">
           <GenreDrawerList
             onSelectGenre={onSelectGenre}

@@ -46,8 +46,11 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
               boxSize="32px"
               borderRadius={8}
               src={genre.image_background}
+              objectFit="cover"
             />
             <Button
+              whiteSpace="nomal"
+              textAlign="left"
               key={idx}
               fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
               color={

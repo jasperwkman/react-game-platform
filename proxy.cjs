@@ -6,12 +6,16 @@ const app = express();
 const port = 3000;
 
 var platforms = null;
+var genres = null;
 
 app.use(cors());
 
 app.get("/:func", async (req, res) => {
     try {
-
+        if (req.params.func == 'genres' && genres != null) {
+            res.json(genres)
+            return
+        }
         param = {
             key: "71861e9efc4b4470bad7b1d04eb50b24",
         }
@@ -23,28 +27,30 @@ app.get("/:func", async (req, res) => {
         const response = await axios.get(`https://api.rawg.io/api/${req.params.func}`, {
             params: param
         });
+        if (req.params.func == 'genres' && genres == null) {
+            genres = response.data
+        }
         res.json(response.data);
     } catch (error) {
         res.status(500).send(error.toString());
     }
 });
 app.get("/platforms/lists/parents", async (req, res) => {
-    if (platforms) {
+    if (platforms != null) {
+        console.log("Return cache platforms");
         res.json(platforms);
-
-    } else {
-        try {
-            console.log(req.query);
-            const response = await axios.get(`https://api.rawg.io/api/platforms/lists/parents`, {
-                params: {
-                    key: "71861e9efc4b4470bad7b1d04eb50b24"
-                }
-            });
-            platforms = response.data;
-            res.json(response.data);
-        } catch (error) {
-            res.status(500).send(error.toString());
-        }
+        return
+    }
+    try {
+        const response = await axios.get(`https://api.rawg.io/api/platforms/lists/parents`, {
+            params: {
+                key: "71861e9efc4b4470bad7b1d04eb50b24"
+            }
+        });
+        platforms = response.data;
+        res.json(response.data);
+    } catch (error) {
+        res.status(500).send(error.toString());
     }
 });
 app.listen(port, () => {
